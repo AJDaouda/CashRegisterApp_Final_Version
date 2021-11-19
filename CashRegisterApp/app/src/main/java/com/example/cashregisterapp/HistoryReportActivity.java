@@ -1,7 +1,6 @@
 package com.example.cashregisterapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,12 +8,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cashregisterapp.Model.PurchaseHistory;
 
 import java.util.ArrayList;
 
-public class HistoryReportActivity extends AppCompatActivity {
+public class HistoryReportActivity extends AppCompatActivity implements HistoryListViewAdapter.ListClickListener {
     RecyclerView historyRecyclerview;
     TextView historytextview;
     ArrayList<PurchaseHistory> myhistorylist = new ArrayList<>();
@@ -32,7 +32,7 @@ public class HistoryReportActivity extends AppCompatActivity {
             myhistorylist = this.getIntent().getExtras().getParcelableArrayList("listOfHistory");
             //System.out.println(myhistorylist);
             HistoryListViewAdapter adapter = new HistoryListViewAdapter(this, myhistorylist);
-            //adapter.listener = this;
+            adapter.listener = this;
             historyRecyclerview.setAdapter(adapter);
         }
         else {System.out.println("Empty History");
@@ -40,14 +40,20 @@ public class HistoryReportActivity extends AppCompatActivity {
             historytextview.setVisibility(View.VISIBLE);
             historyRecyclerview.setVisibility(View.INVISIBLE);
         }
-//        System.out.println("Printing History in HistoryActivity:");
-//
+        System.out.println("Printing History in HistoryActivity:");
+
     }
 
-    /*@Override
-    public void onCarSelected(Car selectedCar) {
-        Toast.makeText(this,selectedCar.car_model + " is Selected",Toast.LENGTH_LONG ).show();
-    }*/
+    @Override
+    public void onHistorySelected(PurchaseHistory selectedHistory) {
+        Intent toDetailActivity = new Intent(this, HistoryDetailsActivity.class);
+        //toDetailActivity.putExtra("historyDetails",selectedHistory.toString());
+       toDetailActivity.putExtra("historyDetails",selectedHistory);
+        startActivity(toDetailActivity);
+        System.out.println("My history details are: \n"+ selectedHistory.toString());
+        Toast.makeText(this, "History details being sent", Toast.LENGTH_SHORT).show();
+
+    }
 }
 
 

@@ -3,6 +3,7 @@
     package="com.example.cashregisterapp" >
 
     <application
+        android:name=".Model.MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -11,7 +12,11 @@
         android:theme="@style/Theme.CashRegisterApp" >
         <activity
             android:name=".HistoryDetailsActivity"
-            android:exported="false" />
+            android:exported="true">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.cashregisterapp.HistoryReportActivity" />
+        </activity>
         <activity
             android:name=".RestockActivity"
             android:exported="true" >
@@ -45,3 +50,4 @@
     </application>
 
 </manifest>
+

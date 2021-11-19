@@ -15,11 +15,12 @@
         android:layout_marginTop="30dp"
         android:gravity="center"
         android:inputType="number"
-        android:text="@string/EditText_text"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- android:text="@string/EditText_text"-->
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
@@ -37,26 +38,29 @@
 
         <Button
             android:id="@+id/OK_Btn"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
             android:layout_marginLeft="100dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="btnClicked"
             android:text="@string/Restock_OK_Btn" />
 
         <Button
             android:id="@+id/Restock_Cancel_Btn"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
             android:layout_marginRight="100dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:onClick="btnClicked"
             android:text="@string/Restock_Cancel_Btn" />
     </LinearLayout>
 
     <ListView
+        android:id="@+id/Restock_ListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

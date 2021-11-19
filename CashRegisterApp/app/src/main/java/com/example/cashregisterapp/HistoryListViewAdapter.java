@@ -17,7 +17,10 @@ public class HistoryListViewAdapter extends RecyclerView.Adapter<HistoryListView
     Context hContext;
     ArrayList<PurchaseHistory> allHistoryList;
 
+    public interface ListClickListener{
+        void onHistorySelected(PurchaseHistory seletedHistory);}
 
+    public ListClickListener listener;
     // inner class
     // View Holder = Row in the table
     // static = able to access it from the class without creating object
@@ -54,6 +57,12 @@ public class HistoryListViewAdapter extends RecyclerView.Adapter<HistoryListView
         holder.getProdName().setText(allHistoryList.get(position).getProdName());
         holder.getProdQnt().setText(allHistoryList.get(position).getProdQnt()+"");
         holder.getProdPrice().setText(allHistoryList.get(position).getProdPrice()+"");
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onHistorySelected(allHistoryList.get(position));
+            }
+        });
     }
     @Override
     public int getItemCount() {return allHistoryList.size(); }
