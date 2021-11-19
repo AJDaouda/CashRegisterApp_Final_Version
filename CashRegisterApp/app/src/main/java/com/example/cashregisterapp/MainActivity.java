@@ -1,5 +1,6 @@
 package com.example.cashregisterapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.cashregisterapp.Model.MyApp;
 import com.example.cashregisterapp.Model.PurchaseHistory;
 import com.example.cashregisterapp.Model.StoreManager;
 
@@ -26,7 +28,9 @@ public class MainActivity extends AppCompatActivity {
 
     //External class objects declaration
     ListViewAdapter customAdapter;//To access the "ListViewAdapter" class
-    static StoreManager mngObj = new StoreManager(); //To access the "StoreManager" class
+    //static StoreManager mngObj = new StoreManager(); //To access the "StoreManager" class
+
+    //((MyApp) getApplication()).getManager().getListOfProd()
     //static PurchaseHistory historyMngObj = new PurchaseHistory();
     ArrayList<PurchaseHistory> Historylist = new ArrayList<>();
     PurchaseHistory history;
@@ -76,7 +80,9 @@ public class MainActivity extends AppCompatActivity {
         catalogue = (ListView) findViewById(R.id.listViewid);
 
         // Instantiating the "customAdapter" created above
-        customAdapter = new ListViewAdapter(mngObj.getListOfProd(),this);
+        //customAdapter = new ListViewAdapter(mngObj.getListOfProd(),this);
+        customAdapter = new ListViewAdapter(((MyApp) getApplication()).getManager().getListOfProd(),this);
+
         catalogue.setAdapter(customAdapter);// Setting "customAdapter" as the adapter to be used by the "catalogue" listview
 
         builder = new AlertDialog.Builder(this);
@@ -85,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selectedIndex = position;
-                itemSelectedTV.setText(mngObj.getListOfProd().get(selectedIndex).getProdName());
+                itemSelectedTV.setText(((MyApp) getApplication()).getManager().getListOfProd().get(selectedIndex).getProdName());
 
             }
         });
@@ -94,19 +100,19 @@ public class MainActivity extends AppCompatActivity {
     //Calculates the amount due for a purchase
     private double calculateTotal(){
         userQnt = Integer.parseInt(itemQntTV.getText().toString());
-        double price = mngObj.getListOfProd().get(selectedIndex).getProdPrice();
+        double price = ((MyApp) getApplication()).getManager().getListOfProd().get(selectedIndex).getProdPrice();
         total = userQnt*price;
         purchasePrice.setText(String.format("$%,.2f", total));
-        System.out.println("Item:" + mngObj.getListOfProd().get(selectedIndex).getProdName()+
+        System.out.println("Item:" + ((MyApp) getApplication()).getManager().getListOfProd().get(selectedIndex).getProdName()+
                 "\n" + "Qnt: " + userQnt +
                 "\n" + "Total: $ "+ total);
         return total; }
 
     //Decrease the inventory for each item when a purchase is completed
     private void updateInventoryQnt(){
-        newProdQnt = mngObj.getListOfProd().get(selectedIndex).getProdQnt()-userQnt;
-        mngObj.getListOfProd().get(selectedIndex).setProdQnt(newProdQnt);
-        System.out.println(mngObj.getListOfProd().get(selectedIndex).getProdQnt());
+        newProdQnt = ((MyApp) getApplication()).getManager().getListOfProd().get(selectedIndex).getProdQnt()-userQnt;
+        ((MyApp) getApplication()).getManager().getListOfProd().get(selectedIndex).setProdQnt(newProdQnt);
+        System.out.println(((MyApp) getApplication()).getManager().getListOfProd().get(selectedIndex).getProdQnt());
         System.out.println(newProdQnt); }
 
     //Increase the inventory for each item when a purchase is completed
@@ -158,18 +164,18 @@ public class MainActivity extends AppCompatActivity {
         if (!((itemQntTV.getText().toString().isEmpty())||(itemSelectedTV.getText().toString().isEmpty()))){
             //int userSelectedQnt = Integer.parseInt(itemQntTV.getText().toString());
 
-            if(!(mngObj.checkInventory(mngObj.getListOfProd().get(selectedIndex),userQnt))){
+            if(!(((MyApp) getApplication()).getManager().checkInventory(((MyApp) getApplication()).getManager().getListOfProd().get(selectedIndex),userQnt))){
                 Toast.makeText(this,"Not enough quantity in stock!!!",Toast.LENGTH_SHORT).show();
                 itemQntTV.setText(qntStr="");
                 purchasePrice.setText(String.format("$%,.2f", nullTotal));}
             else{
-                newProdQnt = mngObj.getListOfProd().get(selectedIndex).getProdQnt()-userQnt;
+                newProdQnt = ((MyApp) getApplication()).getManager().getListOfProd().get(selectedIndex).getProdQnt()-userQnt;
                 purchasePrice.setText(String.format("$%,.2f", calculateTotal()));
                 showAlertBox();
                 updateInventoryQnt();
                 customAdapter.notifyDataSetChanged();
                 clearUI();
-                history = new PurchaseHistory(mngObj.getListOfProd().get(selectedIndex).getProdName(),
+                history = new PurchaseHistory(((MyApp) getApplication()).getManager().getListOfProd().get(selectedIndex).getProdName(),
                         userQnt, total,(new Date().toString())) ;
                 Historylist.add(history);
                 System.out.println("My History is: \n"+ Historylist);
@@ -186,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
     private void showAlertBox(){
         builder.setTitle("Thank you for shopping with us");
         builder.setMessage("Your purchase is:" + "\n" + userQnt + " "+
-                mngObj.getListOfProd().get(selectedIndex).getProdName()+ " "+
+                ((MyApp) getApplication()).getManager().getListOfProd().get(selectedIndex).getProdName()+ " "+
                 "for the total price of "+ String.format("$%,.2f", calculateTotal()));
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
@@ -211,12 +217,20 @@ public class MainActivity extends AppCompatActivity {
         Bundle bundle1 = new Bundle();
         Bundle bundle2 = new Bundle();
         //System.out.println("My mainActivity History is: \n"+ Historylist);
-        System.out.println("My product list is: \n"+ mngObj.getListOfProd().toString());
+        System.out.println("My product list is: \n"+ ((MyApp) getApplication()).getManager().getListOfProd().toString());
         bundle1.putParcelableArrayList("listOfHistory",Historylist);
-        bundle2.putParcelableArrayList("ListOfProd",mngObj.getListOfProd());
+        bundle2.putParcelableArrayList("ListOfProd",((MyApp) getApplication()).getManager().getListOfProd());
         toMngActivity.putExtras(bundle1);
         toMngActivity.putExtras(bundle2);
         startActivity(toMngActivity);
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        //outState.putParcelableArrayList("allToDos",allTodos);
+
+        //outState.putParcelableArrayList("allproductList",newlistOfProd);
     }
 
 }

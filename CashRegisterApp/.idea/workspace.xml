@@ -13,17 +13,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1612e471-7c59-4ce0-b696-9c8ee914aad1" name="Default Changelist" comment="CashRegisterApp_Version">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cashregisterapp/Model/MyApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="1612e471-7c59-4ce0-b696-9c8ee914aad1" name="Default Changelist" comment="CashRegisterApp_Version3.1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cashregisterapp/HistoryDetailsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cashregisterapp/HistoryDetailsActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cashregisterapp/HistoryListViewAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cashregisterapp/HistoryListViewAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cashregisterapp/HistoryReportActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cashregisterapp/HistoryReportActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cashregisterapp/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cashregisterapp/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cashregisterapp/RestockActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cashregisterapp/RestockActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_history_details.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_history_details.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_restock.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_restock.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +60,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Week 1/Apps/CalculatorApp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.113413333">
@@ -250,7 +243,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637299604427</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="CashRegisterApp_Version3.1">
+      <created>1637350303025</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1637350303026</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -280,6 +280,7 @@
     <MESSAGE value="CashRegisterApp_Version2.8" />
     <MESSAGE value="CashRegisterApp_Version2.9" />
     <MESSAGE value="CashRegisterApp_Version" />
-    <option name="LAST_COMMIT_MESSAGE" value="CashRegisterApp_Version" />
+    <MESSAGE value="CashRegisterApp_Version3.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="CashRegisterApp_Version3.1" />
   </component>
 </project>

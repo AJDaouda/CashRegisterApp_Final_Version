@@ -1,5 +1,6 @@
 package com.example.cashregisterapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -68,5 +69,12 @@ public class RestockActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        //outState.putParcelableArrayList("allToDos",allTodos);
+
+        //outState.putParcelableArrayList("allproductList",newlistOfProd);
+    }
 
 }
