@@ -1,4 +1,4 @@
-package com.example.cashregisterapp;
+package Controllers;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.cashregisterapp.Model.Product;
 import com.example.cashregisterapp.Model.StoreManager;
+import com.example.cashregisterapp.R;
 
 import java.util.List;
 

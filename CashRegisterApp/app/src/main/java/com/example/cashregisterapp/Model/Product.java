@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Product implements Parcelable{
+
     //Declaring instance variables
     private String prodName;
     private int prodQnt;
@@ -18,12 +19,12 @@ public class Product implements Parcelable{
         this.prodQnt = prodQnt;
         this.prodPrice = prodPrice; }
 
-    //creating getters for the class instance variables
+    //Creating getters for the class instance variables
     public String getProdName() { return prodName; }
     public int getProdQnt() {return prodQnt; }
     public double getProdPrice() { return prodPrice; }
 
-    //creating setters for the class instance variables
+    //Creating setters for the class instance variables
     public void setProdName(String prodName) {this.prodName = prodName; }
     public void setProdQnt(int prodQnt) {this.prodQnt = prodQnt;}
     public void setProdPrice(double prodPrice) { this.prodPrice = prodPrice; }
@@ -32,8 +33,7 @@ public class Product implements Parcelable{
     protected Product(Parcel in) {
         prodName = in.readString();
         prodQnt = in.readInt();
-        prodPrice = in.readDouble();
-    }
+        prodPrice = in.readDouble(); }
 
     public static final Creator<Product> CREATOR = new Creator<Product>() {
         @Override
@@ -56,40 +56,12 @@ public class Product implements Parcelable{
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(prodName);
         dest.writeInt(prodQnt);
-        dest.writeDouble(prodPrice);
-    }
+        dest.writeDouble(prodPrice); }
 
+    //Creating a "toString" method
     @Override
     public String toString() {
         return "prodName:'" + prodName + '\n' +
                 "prodQnt:" + prodQnt + '\n' +
                 "prodPrice:" + prodPrice; }
 }
-/*
-public class Product {
-    //Declaring instance variables
-    private String prodName;
-    private int prodQnt;
-    private double prodPrice;
-
-    //Empty constructor
-   public Product(){}
-
-    //Custom constructor
-    public Product(String prodName, int prodQnt, double prodPrice) {
-        this.prodName = prodName;
-        this.prodQnt = prodQnt;
-        this.prodPrice = prodPrice; }
-
-    //creating getters for the class instance variables
-    public String getProdName() { return prodName; }
-    public int getProdQnt() {return prodQnt; }
-    public double getProdPrice() { return prodPrice; }
-
-    //creating setters for the class instance variables
-    public void setProdName(String prodName) {this.prodName = prodName; }
-    public void setProdQnt(int prodQnt) {this.prodQnt = prodQnt;}
-    public void setProdPrice(double prodPrice) { this.prodPrice = prodPrice; }
-}
- */
-

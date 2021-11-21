@@ -1,4 +1,4 @@
-package com.example.cashregisterapp;
+package Controllers;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cashregisterapp.Model.PurchaseHistory;
+import com.example.cashregisterapp.R;
 
 import java.util.ArrayList;
 

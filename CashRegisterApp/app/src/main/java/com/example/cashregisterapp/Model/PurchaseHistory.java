@@ -4,6 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class PurchaseHistory extends Product implements Parcelable {
+
+    //Declaring instance variables
     private String purchaseDate;
 
     //Empty constructor
@@ -23,8 +25,7 @@ public class PurchaseHistory extends Product implements Parcelable {
         purchaseDate = in.readString();
         /*prodName = in.readString();
         prodQnt = in.readInt();
-        prodPrice = in.readDouble();*/
-    }
+        prodPrice = in.readDouble();*/}
 
     public static final Creator<PurchaseHistory> CREATOR = new Creator<PurchaseHistory>() {
         @Override
@@ -49,15 +50,13 @@ public class PurchaseHistory extends Product implements Parcelable {
         dest.writeString(purchaseDate);
         /*dest.writeString(prodName);
         dest.writeInt(prodQnt);
-        dest.writeDouble(prodPrice);*/
-    }
+        dest.writeDouble(prodPrice);*/}
 
-    //Creating a "toString"
+    //Creating a "toString" method
     @Override
     public String toString() {
         return "ProductName: " + getProdName() +"\n"+
                 "ProductQnt: " + getProdQnt() +"\n"+
-                "ProductPrice: " + getProdPrice() +"\n"+
-                "purchaseDate=" + purchaseDate; }
-
+                "ProductPrice: " + String.format("$%,.2f", getProdPrice()) +"\n"+
+                "PurchaseDate=" + purchaseDate; }
 }

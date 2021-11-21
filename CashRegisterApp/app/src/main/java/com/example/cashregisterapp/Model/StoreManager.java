@@ -6,9 +6,11 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 
 public class StoreManager {
+
+    /*Create prod array list to add the store items of type "Product"
+    connect to custom adapter to show in prod list*/
+
     //Declaring instance variables
-    //Create prod array list to add the store items of type "Product"
-    // connect to custom adapter to show in prod list
     private ArrayList<Product> listOfProd = new ArrayList<>();
 
     // Creating the store items products
@@ -41,6 +43,7 @@ public class StoreManager {
         else{
             return true; } }
 
+    //Creating a "toString" method
     @Override
     public String toString() {
         return "listOfProd=" + listOfProd;
